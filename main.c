@@ -8,7 +8,7 @@ int main() {
     StrList* list = StrList_alloc();
     do
     {
-        printf("Please enter your choise: ");
+        // printf("Please enter your choise: ");
         scanf("%d", &choise);
 
         switch (choise)
@@ -16,7 +16,7 @@ int main() {
         case 1: 
         {
             int numStrings;
-            printf("Please enter thr number of Strings: ");
+            // printf("Please enter thr number of Strings: ");
             scanf("%d", &numStrings);
             int c;
             // Clear the newline left in the input buffer by scanf()
@@ -25,7 +25,7 @@ int main() {
             
             }
             
-            printf("Enter the strings, separated by spaces: ");
+            // printf("Enter the strings, separated by spaces: ");
 
             for (int i = 0; i < numStrings; i++)
             {
@@ -42,11 +42,11 @@ int main() {
         {
             int index;
             char* data = NULL;
-            printf("Please enter an index: ");
+            // printf("Please enter an index: ");
             scanf("%d", &index);
             // To consume the '\n' left by scanf
             getchar(); 
-            printf("Please enter a string: ");
+            // printf("Please enter a string: ");
             StrList_Scan(&data); 
             StrList_insertAt(list, data, index);
             free(data);
@@ -55,7 +55,7 @@ int main() {
         
         case 3: 
         {
-            printf("LinkedList:\n");
+            // printf("LinkedList:\n");
             StrList_print(list);
             break;
         }    
@@ -63,14 +63,14 @@ int main() {
         case 4:
         {
             int size = StrList_size(list);
-            printf("The list's size is: %d \n", size);
+            printf("%d\n", size);
             break;
         }
 
         case 5: 
         {
             int index;
-            printf("Please enter index to print: ");
+            // printf("Please enter index to print: ");
             scanf("%d", &index);
             StrList_printAt(list, index);
             break;
@@ -78,7 +78,7 @@ int main() {
 
         case 6:
         {
-            printf("The number of chars in the list %d \n", StrList_printLen(list));
+            printf("%d\n", StrList_printLen(list));
             break;
         }
 
@@ -86,10 +86,10 @@ int main() {
         {
             char* data = NULL;
             getchar();
-            printf("Please enter a string: ");
+            // printf("Please enter a string: ");
             StrList_Scan(&data);
             int count = StrList_count(list, data);
-            printf("The string count is: %d \n", count);
+            printf("%d\n", count);
             free(data);
             break;
         }    
@@ -98,7 +98,7 @@ int main() {
         {
             char* data = NULL;
             getchar();
-            printf("Please enter a string: ");
+            // printf("Please enter a string: ");
             StrList_Scan(&data);
             StrList_remove(list, data);
             free(data);
@@ -108,7 +108,7 @@ int main() {
         case 9: 
         {
             int index;
-            printf("Please enter an index: ");
+            // printf("Please enter an index: ");
             scanf("%d", &index);
             StrList_removeAt(list, index);
             break;
