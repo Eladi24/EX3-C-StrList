@@ -144,9 +144,9 @@ int main() {
             int bool = StrList_isSorted(list);
             if (bool == 1)
             {
-                printf("True");
+                printf("true");
             } else {
-                printf("False");
+                printf("false");
             }
             printf("\n");
             break;
