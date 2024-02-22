@@ -13,7 +13,7 @@ typedef struct _node
 struct _StrList
 {
     Node *_head;
-    size_t _size
+    size_t _size;
 };
 
 Node *Node_alloc(char *data, Node *next)
@@ -82,7 +82,13 @@ size_t StrList_size(const StrList *StrList)
 
 void StrList_insertLast(StrList *StrList, const char *data)
 {
-    Node *new_node = Node_alloc(data, NULL);
+    char* data_copy = strdup(data);
+    if (data_copy == NULL)
+    {
+        return;
+    }
+    
+    Node *new_node = Node_alloc(data_copy, NULL);
     Node *last = StrList->_head;
 
     if (StrList->_head == NULL)
@@ -99,9 +105,10 @@ void StrList_insertLast(StrList *StrList, const char *data)
 
     last->_next = new_node;
     StrList->_size++;
+    free(data_copy);
 }
 
-Node *StrList_findAt(StrList *StrList, int index)
+Node *StrList_findAt(const StrList *StrList, int index)
 {
     if (index >= StrList->_size)
         return NULL;
@@ -126,10 +133,15 @@ void StrList_insertAt(StrList *StrList, const char *data, int index)
 
     int count = 0;
     Node *prev = StrList->_head;
+    char* data_copy = strdup(data);
+    if (data_copy == NULL)
+    {
+        return;
+    }
 
     if (index == 0)
     {
-        Node *new_node = Node_alloc(data, StrList->_head);
+        Node *new_node = Node_alloc(data_copy, StrList->_head);
         StrList->_head = new_node;
         StrList->_size++;
         return;
@@ -141,9 +153,10 @@ void StrList_insertAt(StrList *StrList, const char *data, int index)
         count++;
     }
 
-    Node *new_node = Node_alloc(data, prev->_next);
+    Node *new_node = Node_alloc(data_copy, prev->_next);
     prev->_next = new_node;
     StrList->_size++;
+    free(data_copy);
 }
 
 char *StrList_firstData(const StrList *StrList)
@@ -154,12 +167,20 @@ char *StrList_firstData(const StrList *StrList)
 void StrList_print(const StrList *StrList)
 {
     const Node *p = StrList->_head;
+    int isFirst = 1;
     while (p)
     {
-        printf("(%s)->", p->_data);
+        if (isFirst)
+        {
+            printf("%s", p->_data);
+            isFirst = 0;
+        } else {
+        
+        printf(" %s", p->_data);
+        }
         p = p->_next;
     }
-    printf("|| size:%zu\n", StrList->_size);
+    printf("\n");
 }
 
 void StrList_printAt(const StrList *Strlist, int index)
@@ -206,7 +227,6 @@ int StrList_count(StrList *StrList, const char *data)
 
 void StrList_remove(StrList *StrList, const char *data)
 {
-    int count = 0;
     Node *node = StrList->_head;
     Node *prev = NULL;
     while (node != NULL)
@@ -374,8 +394,10 @@ void MergeSort(Node** headRef) {
     }
 
     FrontBackSplit(head, &a, &b);
-    StrList_sort(&a);
-    StrList_sort(&b);
+    MergeSort(&a);
+    MergeSort(&b);
+    // StrList_sort(&a);
+    // StrList_sort(&b);
     *headRef = SortedMerge(a, b);
 }
 

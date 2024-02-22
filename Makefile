@@ -1,15 +1,18 @@
-flags = -g -Wall
+FLAGS = -g -Wall
 
 all: StrList
-
+# Strlistd: main.o libclassstr.a
+# 	gcc $(FLAGS) -o Strlistd main.o libclassstr.a
+# libclassstr.a: StrList.o
+# 	ar -rcs libclassstr.a StrList.o
 StrList: main.o StrList.o
-	gcc $(flags) main.o StrList.o -o StrList
+	gcc $(FLAGS) main.o StrList.o -o StrList
 StrList.o: StrList.c StrList.h
-	gcc $(flags) -c StrList.c -o StrList.o
+	gcc $(FLAGS) -c StrList.c -o StrList.o
 main.o: main.c 
-	gcc $(flags) -c main.c -o main.o
+	gcc $(FLAGS) -c main.c -o main.o
 
 .PHONY: all clean
 
 clean:
-		rm -f *.o StrList
+		rm -f *.o *.a StrList Strlistd
