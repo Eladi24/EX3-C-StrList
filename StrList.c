@@ -396,8 +396,6 @@ void MergeSort(Node** headRef) {
     FrontBackSplit(head, &a, &b);
     MergeSort(&a);
     MergeSort(&b);
-    // StrList_sort(&a);
-    // StrList_sort(&b);
     *headRef = SortedMerge(a, b);
 }
 
@@ -406,7 +404,7 @@ void StrList_sort(StrList* StrList) {
 }
 
 int StrList_isSorted(StrList* StrList) {
-    if (StrList == NULL)
+    if (StrList == NULL || StrList->_head == NULL)
     {
         return 1;
     }

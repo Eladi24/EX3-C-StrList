@@ -1,10 +1,6 @@
 FLAGS = -g -Wall
 
 all: StrList
-# Strlistd: main.o libclassstr.a
-# 	gcc $(FLAGS) -o Strlistd main.o libclassstr.a
-# libclassstr.a: StrList.o
-# 	ar -rcs libclassstr.a StrList.o
 StrList: main.o StrList.o
 	gcc $(FLAGS) main.o StrList.o -o StrList
 StrList.o: StrList.c StrList.h

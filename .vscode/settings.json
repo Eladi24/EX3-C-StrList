@@ -1,5 +1,12 @@
 {
     "files.associations": {
         "string.h": "c"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/vboxuser/Git Projects/EX3-C-StrList",
+            "binaryPath": "/home/vboxuser/Git Projects/EX3-C-StrList/StrList",
+            "binaryArgs": []
+        }
+    ]
 }

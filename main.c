@@ -8,7 +8,6 @@ int main() {
     StrList* list = StrList_alloc();
     do
     {
-        // printf("Please enter your choise: ");
         scanf("%d", &choise);
 
         switch (choise)
@@ -16,7 +15,6 @@ int main() {
         case 1: 
         {
             int numStrings;
-            // printf("Please enter thr number of Strings: ");
             scanf("%d", &numStrings);
             int c;
             // Clear the newline left in the input buffer by scanf()
@@ -25,7 +23,6 @@ int main() {
             
             }
             
-            // printf("Enter the strings, separated by spaces: ");
 
             for (int i = 0; i < numStrings; i++)
             {
@@ -42,11 +39,9 @@ int main() {
         {
             int index;
             char* data = NULL;
-            // printf("Please enter an index: ");
             scanf("%d", &index);
             // To consume the '\n' left by scanf
             getchar(); 
-            // printf("Please enter a string: ");
             StrList_Scan(&data); 
             StrList_insertAt(list, data, index);
             free(data);
@@ -55,7 +50,6 @@ int main() {
         
         case 3: 
         {
-            // printf("LinkedList:\n");
             StrList_print(list);
             break;
         }    
@@ -70,7 +64,6 @@ int main() {
         case 5: 
         {
             int index;
-            // printf("Please enter index to print: ");
             scanf("%d", &index);
             StrList_printAt(list, index);
             break;
@@ -86,7 +79,6 @@ int main() {
         {
             char* data = NULL;
             getchar();
-            // printf("Please enter a string: ");
             StrList_Scan(&data);
             int count = StrList_count(list, data);
             printf("%d\n", count);
@@ -98,7 +90,6 @@ int main() {
         {
             char* data = NULL;
             getchar();
-            // printf("Please enter a string: ");
             StrList_Scan(&data);
             StrList_remove(list, data);
             free(data);
@@ -108,7 +99,6 @@ int main() {
         case 9: 
         {
             int index;
-            // printf("Please enter an index: ");
             scanf("%d", &index);
             StrList_removeAt(list, index);
             break;
